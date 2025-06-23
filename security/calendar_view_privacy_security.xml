@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Hide other users' private events from standard internal users -->
+    <!-- Hide other users' PRIVATE events -->
     <record id="rule_calendar_view_privacy" model="ir.rule">
         <field name="name">Calendar: hide others' private events</field>
         <field name="model_id" ref="calendar.model_calendar_event"/>
-        <!-- Visible if event is Public OR the current user is creator OR attendee -->
+
+        <!--
+            Domain logic (AND-ed):
+            ▸ Same-company records  (or no company)
+            ▸ Either event is PUBLIC
+              OR current user is creator
+              OR current user’s partner is in attendees
+        -->
         <field name="domain_force">
-            ['|',
-                ('calendar_view', '=', 'public'),
+            ['&',
+                '|', ('company_id', '=', False),
+                     ('company_id', 'child_of', [user.company_id.id]),
                 '|',
-                    ('user_id', '=', user.id),
-                    ('partner_ids', 'in', user.partner_id.id)
+                    ('calendar_view', '=', 'public'),
+                    '|', ('user_id', '=', user.id),
+                       ('partner_ids', 'in', user.partner_id.id)
             ]
         </field>
+
+        <!-- Apply only to ordinary internal users -->
         <field name="groups" eval="[(4, ref('base.group_user'))]"/>
-        <!-- Read-only rule (write/create/unlink handled by existing ACLs) -->
     </record>
 </odoo>
