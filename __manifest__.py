@@ -23,5 +23,6 @@ Default new Odoo calendar events to private sensitivity for Microsoft Outlook sy
     "application": False,
     "auto_install": False,
 
+
 }
 
