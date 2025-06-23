@@ -7,7 +7,7 @@
         <field name="arch" type="xml">
             <!-- Put the new selector just after the native Privacy field -->
             <xpath expr="//field[@name='privacy']" position="after">
-                <field name="calendar_view"/>
+                <field name="calendar_view" string="Calendar visibility"/>
             </xpath>
         </field>
     </record>
