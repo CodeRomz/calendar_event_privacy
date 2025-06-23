@@ -8,7 +8,7 @@
             <!-- Put the new selector just after the native Privacy field -->
             <xpath expr="//field[@name='privacy']" position="after">
                 <label for="calendar_view"/>
-                <field name="calendar_view" string="Calendar visibility"/>
+                <field name="calendar_view"/>
             </xpath>
         </field>
     </record>
