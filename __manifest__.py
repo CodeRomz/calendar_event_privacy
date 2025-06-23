@@ -6,6 +6,23 @@
 
     'description': """
 Default new Odoo calendar events to private sensitivity for Microsoft Outlook sync.
+
+Go to Settings → Technical → Security → Record Rules
+
+Search for model: calendar.event
+
+Disable the following by unchecking all access rights or archiving:
+
+"All Calendar Event for employees"
+
+"Own events"
+
+"Private events"
+
+Keep only this active:
+
+Calendar: Hide Others’ Private Events
+
     """,
 
     'author': "CodeRomz",
