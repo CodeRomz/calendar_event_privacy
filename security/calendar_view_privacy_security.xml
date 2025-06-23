@@ -3,11 +3,14 @@
     <record id="rule_calendar_view_privacy" model="ir.rule">
         <field name="name">Calendar: Hide Others’ Private Events</field>
         <field name="model_id" ref="calendar.model_calendar_event"/>
+
+        <!-- Only allow access if:
+             - Event is public, OR
+             - Current user is the creator, OR
+             - Current user is an attendee (via partner_ids)
+        -->
         <field name="domain_force">
             [
-                '|',
-                    ('company_id', '=', False),
-                    ('company_id', 'child_of', [user.company_id.id]),
                 '|',
                     ('calendar_view', '=', 'public'),
                     '|',
@@ -15,6 +18,7 @@
                         ('partner_ids', 'in', user.partner_id.id)
             ]
         </field>
+
         <field name="groups" eval="[(4, ref('base.group_user'))]"/>
     </record>
 </odoo>
