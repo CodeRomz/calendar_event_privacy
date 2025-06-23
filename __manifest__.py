@@ -19,6 +19,11 @@ Default new Odoo calendar events to private sensitivity for Microsoft Outlook sy
     # any module necessary for this one to work correctly
     'depends': ['calendar'],
 
+    "data": [
+        "security/calendar_view_privacy_security.xml",
+        "views/calendar_event_view.xml",
+    ],
+
     "installable": True,
     "application": False,
     "auto_install": False,
