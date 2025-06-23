@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "calendar_event_privacy",
+    'name': "Calendar Event Privacy Default",
 
-    'summary': "Short (1 phrase/line) summary of the module's purpose",
+    'summary': "Odoo calendar events to private sensitivity",
 
     'description': """
-Long description of module's purpose
+Default new Odoo calendar events to private sensitivity for Microsoft Outlook sync.
     """,
 
     'author': "My Company",
@@ -15,10 +15,15 @@ Long description of module's purpose
     # Check https://github.com/odoo/odoo/blob/15.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '0.1',
+    'version': '17.0.1.0.0',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['calendar'],
+
+    "installable": True,
+    "application": False,
+    "auto_install": False,
+
 
     # always loaded
     'data': [
